@@ -10,14 +10,12 @@ const RickAndMortys = () => {
 
     useEffect(() => {
         axios.get(`https://rickandmortyapi.com/api/location/${random}`)
-            .then(res => setGetInfo(res.data))
-            // setUrls(res.data)
+            .then(res => {
+                setGetInfo(res.data);
+                setUrls(res.data.residents);
+              });
     }, []);
-    useEffect(() => {
-        axios.get(`https://rickandmortyapi.com/api/location/${random}`)
-            .then(res => setUrls(res.data.residents))
-            // setUrls(res.data)
-    }, []);
+
 
     const searchType = () => {
         axios.get(`https://rickandmortyapi.com/api/location/${searchValue}`)
