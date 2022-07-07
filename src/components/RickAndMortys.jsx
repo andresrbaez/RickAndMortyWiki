@@ -5,17 +5,14 @@ const RickAndMortys = () => {
 
     const [getInfo, setGetInfo] = useState({});
     const [searchValue, setSearchValue] = useState("")
-    const [urls, setUrls] = useState([]);
     const random = Math.floor(Math.random() * 126) + 1
 
     useEffect(() => {
         axios.get(`https://rickandmortyapi.com/api/location/${random}`)
             .then(res => {
                 setGetInfo(res.data);
-                setUrls(res.data.residents);
               });
     }, []);
-
 
     const searchType = () => {
         axios.get(`https://rickandmortyapi.com/api/location/${searchValue}`)
@@ -23,7 +20,6 @@ const RickAndMortys = () => {
     }
 
     console.log(getInfo);
-    // console.log(urls);
 
 
 
