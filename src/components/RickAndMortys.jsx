@@ -24,11 +24,20 @@ const RickAndMortys = () => {
 
 
     return (
-        <div>
-            <div className='input-div'>
-                <input type="text" size={70} placeholder='escriba id' value={searchValue} onChange={e => setSearchValue(e.target.value)}/>
-                <button onClick={searchType} className='btn-RNM'>Search</button>
+        <div className='principal-div'>
+
+            <div className='search-div'>
+                <form className="form">
+                <input type="text" required value={searchValue} onChange={e => setSearchValue(e.target.value)}/>
+                <label className='lbl-name'>
+                    <span className="txt-name">
+                        Escriba ID
+                    </span>
+                </label>
+                </form>
+                <button onClick={searchType} className='btn-RNM'>Search</button>             
             </div>
+
                 <h1>{getInfo.name}</h1>
                 <ul>
                         {getInfo.residents?.map((url) => (
@@ -37,9 +46,6 @@ const RickAndMortys = () => {
                             </li>
                         ))}
                 </ul>
-
-
-            
         </div>
     );
 };

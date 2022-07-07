@@ -6,11 +6,14 @@ function App() {
 
   return (
     <div className="App">
-      
-      <div className="title">
-        <h1>Rick and Morty Wiki</h1>
-        <RickAndMortys/>
-      </div>
+      <header>
+      </header>
+      <section>
+        <div className="title">
+          <h1>Rick and Morty Wiki</h1>
+          <RickAndMortys/>
+        </div>
+      </section>
 
     </div>
   )
