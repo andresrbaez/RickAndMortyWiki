@@ -114,14 +114,16 @@ section{
 
 .btn-RNM{
   height: 30px;
-  width: 80px;
+  width: 90px;
   cursor: pointer;
   font-size: 16px;
   color: white;
   background: none;
-  border: none;
-  box-shadow: 1px 1px 5px #2ecece;
+  border: 1px solid #2ecece;
   border-radius: 5px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
 ul{
@@ -131,8 +133,14 @@ ul{
 p{
   margin: 0;
 }
+h1, h3{
+  font-family: 'Pangolin', cursive;
+  color: rgba(1, 214, 214, 0.789);
+}
 
-
+.title>h1{
+  font-size: 2.5rem;
+}
 
 
 
