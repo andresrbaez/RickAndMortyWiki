@@ -26,7 +26,7 @@ const RickAndMortys = () => {
     return (
         <div>
             <div className='input-div'>
-                <input type="text" placeholder='escriba id' value={searchValue} onChange={e => setSearchValue(e.target.value)}/>
+                <input type="text" size={70} placeholder='escriba id' value={searchValue} onChange={e => setSearchValue(e.target.value)}/>
                 <button onClick={searchType} className='btn-RNM'>Search</button>
             </div>
                 <h1>{getInfo.name}</h1>
