@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Character from "./Characters";
+import LocationInfo from "./LocationInfo";
 
 const RickAndMortys = () => {
   const [getInfo, setGetInfo] = useState({});
@@ -22,7 +23,7 @@ const RickAndMortys = () => {
       .then((res) => setGetInfo(res.data));
   };
 
-  let populationInfo = getInfo.residents?.length
+//   let populationInfo = getInfo.residents?.length
 
   return (
     <div className="principal-div">
@@ -39,24 +40,7 @@ const RickAndMortys = () => {
           </label>
         </form>
       </div>
-      <h1 className="title-size">{getInfo.name}</h1>
-      <div className="title-info">
-        <div>
-          <p>
-            <b>Type: </b>{getInfo.type}
-          </p>
-        </div>
-        <div>
-          <p>
-            <b>Dimension: </b>{getInfo.dimension}
-          </p>
-        </div>
-        <div>
-          <p>
-            <b>Population: </b>{populationInfo}
-          </p>
-        </div>
-      </div>
+      <LocationInfo getInfo={getInfo}/>
 
       <h1 className="title-size">Residents</h1>
 

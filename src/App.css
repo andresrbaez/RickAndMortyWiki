@@ -129,9 +129,12 @@ ul{
   display: flex;
   justify-content: space-around;
   font-size: 18px;
+  color: #fff;
 }
 .title-size{
   font-size: 2rem;
+  margin-top: 15px;
+  margin-bottom: 30px;
 }
 
 
@@ -294,7 +297,7 @@ h3{
   .cards{
     display: flex;
     width: 100%;
-    min-width: 340px;
+    min-width: 335px;
     /* width: 539px; */
     height: 160px;
     margin: 5px;
