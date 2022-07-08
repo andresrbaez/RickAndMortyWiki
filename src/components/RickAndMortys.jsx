@@ -35,30 +35,30 @@ const RickAndMortys = () => {
             onChange={(e) => setSearchValue(e.target.value)}
           />
           <label className="lbl-name">
-            <span className="txt-name">Escriba ID</span>
+            <span className="txt-name">Type ID location</span>
           </label>
         </form>
       </div>
-      <h1>{getInfo.name}</h1>
+      <h1 className="title-size">{getInfo.name}</h1>
       <div className="title-info">
         <div>
           <p>
-            <b>Type: {getInfo.type}</b>
+            <b>Type: </b>{getInfo.type}
           </p>
         </div>
         <div>
           <p>
-            <b>Dimension: {getInfo.dimension}</b>
+            <b>Dimension: </b>{getInfo.dimension}
           </p>
         </div>
         <div>
           <p>
-            <b>Population: {populationInfo}</b>
+            <b>Population: </b>{populationInfo}
           </p>
         </div>
       </div>
 
-      <h1>Residents</h1>
+      <h1 className="title-size">Residents</h1>
 
       <ul>
         {getInfo.residents?.map((url) => (

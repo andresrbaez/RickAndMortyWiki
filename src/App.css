@@ -101,9 +101,10 @@ section{
   min-width: 380px;
   height: 160px;
   margin: 5px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 10px;
   background-color: #2ecece9c;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.401);
 }
 .cards-img>img{
   height: 100%;
@@ -127,6 +128,10 @@ ul{
 .title-info{
   display: flex;
   justify-content: space-around;
+  font-size: 18px;
+}
+.title-size{
+  font-size: 2rem;
 }
 
 
@@ -260,6 +265,36 @@ h3{
     display: flex;
     width: 100%;
     max-width: 539px;
+    /* width: 539px; */
+    height: 160px;
+    margin: 5px;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    background-color: #2ecece9c;
+    overflow: hidden;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.401);
+  }
+  .cards-info{
+    text-align: left;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+  }
+}
+
+@media (max-width: 375px) {
+  ul{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    align-self: center;
+  }
+  .cards{
+    display: flex;
+    width: 100%;
+    min-width: 340px;
     /* width: 539px; */
     height: 160px;
     margin: 5px;
