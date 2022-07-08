@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import Character from "./Characters";
 
 const RickAndMortys = () => {
   const [getInfo, setGetInfo] = useState({});
@@ -38,13 +39,19 @@ const RickAndMortys = () => {
           </label>
         </form>
       </div>
-
       <h1>{getInfo.name}</h1>
+      <ul>
+        {getInfo.residents?.map((url) => (
+            <Character url={url} key={url}/>
+        ))}
+      </ul>
+
+      {/* <h1>{getInfo.name}</h1>
       <ul>
         {getInfo.residents?.map((url) => (
           <li key={url}>{url}</li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };
