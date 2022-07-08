@@ -22,7 +22,7 @@ const RickAndMortys = () => {
       .then((res) => setGetInfo(res.data));
   };
 
-  console.log(getInfo);
+  let populationInfo = getInfo.residents?.length
 
   return (
     <div className="principal-div">
@@ -40,18 +40,31 @@ const RickAndMortys = () => {
         </form>
       </div>
       <h1>{getInfo.name}</h1>
+      <div className="title-info">
+        <div>
+          <p>
+            <b>Type: {getInfo.type}</b>
+          </p>
+        </div>
+        <div>
+          <p>
+            <b>Dimension: {getInfo.dimension}</b>
+          </p>
+        </div>
+        <div>
+          <p>
+            <b>Population: {populationInfo}</b>
+          </p>
+        </div>
+      </div>
+
+      <h1>Residents</h1>
+
       <ul>
         {getInfo.residents?.map((url) => (
-            <Character url={url} key={url}/>
+          <Character url={url} key={url} />
         ))}
       </ul>
-
-      {/* <h1>{getInfo.name}</h1>
-      <ul>
-        {getInfo.residents?.map((url) => (
-          <li key={url}>{url}</li>
-        ))}
-      </ul> */}
     </div>
   );
 };
