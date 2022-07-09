@@ -11,17 +11,17 @@ const LocationInfo = ({getInfo}) => {
             <div className="title-info">
                 <div>
                     <p>
-                        <b>Type: </b>{getInfo.type}
+                        <b className='gray-b'>Type: </b>{getInfo.type}
                     </p>
                 </div>
                 <div>
                     <p>
-                        <b>Dimension: </b>{getInfo.dimension}
+                        <b className='gray-b'>Dimension: </b>{getInfo.dimension}
                     </p>
                 </div>
                 <div>
                     <p>
-                        <b>Population: </b>{populationInfo}
+                        <b className='gray-b'>Population: </b>{populationInfo}
                     </p>
                 </div>
             </div>

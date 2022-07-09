@@ -8,13 +8,19 @@ const ResidentsInfo = ({character}) => {
       <p>
         {character.status} - {character.species}
       </p>
-      <p>
+      <p className="gray-p">
         {" "}
-        <b>Type:</b> {character.type}
+        Origin
       </p>
       <p>
+        {character.origin?.name}
+      </p>
+      <p className="gray-p">
         {" "}
-        <b>Origin:</b> {character.origin?.name}
+        Episodes where appear
+      </p>
+      <p>
+        {character.episode?.length}
       </p>
     </div>
   );

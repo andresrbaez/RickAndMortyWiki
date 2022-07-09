@@ -12,7 +12,7 @@ const Character = ({ url }) => {
             .then(res => setCharacter(res.data))
     }, []);
 
-    // console.log(character);
+    console.log(character);
 
 
   return (
