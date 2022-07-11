@@ -1,13 +1,21 @@
 import React from "react";
+import { useState } from "react";
+import CharacterStatus from "./CharacterStatus";
 
 const ResidentsInfo = ({character}) => {
+
+  // const [status, setStatus] = useState("");
+  // console.log(character.status);
+
+
   return (
     <div className="cards-info">
       <h3>{character.name}</h3>
       <br />
-      <p>
+      <CharacterStatus character={character} />
+      {/* <p className="circle-green">
         {character.status} - {character.species}
-      </p>
+      </p> */}
       <p className="gray-p">
         {" "}
         Origin

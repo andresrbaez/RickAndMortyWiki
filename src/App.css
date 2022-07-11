@@ -144,6 +144,25 @@ ul{
 .gray-b{
   color: #c7c7c7d4;
 }
+.circle{
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+  border-radius: 50%;
+
+}
+
+.green{
+  background: green;
+}
+.red{
+  background: red;
+}
+.gray{
+  background: gray;
+  border: 1px solid rgb(93, 91, 91);
+}
 
 
 
