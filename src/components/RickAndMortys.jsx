@@ -20,10 +20,46 @@ const RickAndMortys = () => {
     e.preventDefault();
     axios
       .get(`https://rickandmortyapi.com/api/location/${searchValue}`)
-      .then((res) => setGetInfo(res.data));
+      .then((res) => {
+        setGetInfo(res.data);
+        reset();
+      });
   };
 
 //   let populationInfo = getInfo.residents?.length
+
+
+  const [page, setPage] = useState(1)
+  const charactersPerPage = 10
+  const lastIndex = page * charactersPerPage
+  const firstIndex = lastIndex - charactersPerPage
+  const charactersPaginated = getInfo.residents?.slice(firstIndex, lastIndex)
+
+  const lastPage = Math.ceil(getInfo.residents?.length / charactersPerPage)
+
+  const numbers = [];
+  for(let i = 1; i <= lastPage; i++){
+    numbers.push(i)
+  }
+
+  // console.log(numbers)
+
+  const[ locationSuggestions, setLocationSuggestions ] = useState([])
+
+  const reset = () => {
+    setSearchValue("");
+  }
+
+
+  useEffect(() => {
+    if(searchValue !== ""){
+      axios.get(`https://rickandmortyapi.com/api/location/?name=${searchValue}`)
+        .then(res => setLocationSuggestions(res.data.results))
+    } else {
+      setLocationSuggestions([])
+      reset();
+    }
+  }, [searchValue]);
 
   return (
     <div className="principal-div">
@@ -32,23 +68,48 @@ const RickAndMortys = () => {
           <input
             type="text"
             required
+            id="searchValue"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
           />
+
+
           <label className="lbl-name">
             <span className="txt-name">Type ID location</span>
           </label>
         </form>
       </div>
+        {locationSuggestions.map(location => (
+        <div className="searchLocation" onClick={() => setGetInfo(location)}>{location.name}</div>
+      ))}
       <LocationInfo getInfo={getInfo}/>
 
       <h1 className="title-size">Residents</h1>
 
       <ul>
-        {getInfo.residents?.map((url) => (
+        {charactersPaginated?.map((url) => (
           <Character url={url} key={url} />
         ))}
       </ul>
+
+      <div className="btn-pagination">
+        <button 
+        className="btn-numbers" 
+        onClick={() => setPage(page-1)} 
+        disabled={page === 1}
+        >
+          <i className='bx bx-chevron-left icon-size'></i>
+        </button>
+
+        <button 
+        className="btn-numbers" 
+        onClick={() => setPage(page+1)} 
+        disabled={page === lastPage}
+        >
+          <i className='bx bx-chevron-right icon-size'></i>
+        </button>
+      </div>
+
     </div>
   );
 };

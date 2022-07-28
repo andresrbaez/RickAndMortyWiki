@@ -264,6 +264,50 @@ h3{
   }
 }
 
+/* Pagination */
+.btn-pagination{
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-numbers{
+  border: 0;
+  /* background: #6c79db; */
+  color: #fff;
+  box-shadow: 2px 2px 8px #282c34;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: 3px;
+  cursor: pointer;
+  outline: 0;
+  transition: .2s;
+
+  background-color: #0a8383b1;
+  cursor: pointer;
+}
+.btn-numbers:hover {
+  background: rgba(1, 214, 214, 0.789);
+  transition: .2s;
+}
+.icon-size{
+  font-size: 1.7rem;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.searchLocation{
+  cursor: pointer;
+  color: rgba(1, 214, 214, 0.789);
+}
+
+
 /* Media Querys */
 
 @media (max-width: 875px) {
