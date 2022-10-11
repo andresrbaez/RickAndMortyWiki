@@ -294,6 +294,15 @@ h3{
   background: rgba(1, 214, 214, 0.789);
   transition: .2s;
 }
+
+.btn-numbers[disabled=disabled], .btn-numbers:disabled {
+  background-color: #0a8383b1;
+  cursor: default;
+}
+
+
+
+
 .icon-size{
   font-size: 1.7rem;
   display: flex;
