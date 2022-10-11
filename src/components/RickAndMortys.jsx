@@ -1,12 +1,16 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import Character from "./Characters";
-import LocationInfo from "./LocationInfo";
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import Character from './Characters';
+import LocationInfo from './LocationInfo';
 
 const RickAndMortys = () => {
   const [getInfo, setGetInfo] = useState({});
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   const random = Math.floor(Math.random() * 126) + 1;
+
+  const reset = () => {
+    setSearchValue('');
+  };
 
   useEffect(() => {
     axios
@@ -26,38 +30,39 @@ const RickAndMortys = () => {
       });
   };
 
-//   let populationInfo = getInfo.residents?.length
+  //   let populationInfo = getInfo.residents?.length
 
+  const [page, setPage] = useState(1);
+  const charactersPerPage = 10;
+  const lastIndex = page * charactersPerPage;
+  const firstIndex = lastIndex - charactersPerPage;
+  const charactersPaginated = getInfo.residents?.slice(firstIndex, lastIndex);
 
-  const [page, setPage] = useState(1)
-  const charactersPerPage = 10
-  const lastIndex = page * charactersPerPage
-  const firstIndex = lastIndex - charactersPerPage
-  const charactersPaginated = getInfo.residents?.slice(firstIndex, lastIndex)
-
-  const lastPage = Math.ceil(getInfo.residents?.length / charactersPerPage)
+  const lastPage = Math.ceil(getInfo.residents?.length / charactersPerPage);
 
   const numbers = [];
-  for(let i = 1; i <= lastPage; i++){
-    numbers.push(i)
+  for (let i = 1; i <= lastPage; i++) {
+    numbers.push(i);
   }
 
   // console.log(numbers)
 
-  const[ locationSuggestions, setLocationSuggestions ] = useState([])
+  const [locationSuggestions, setLocationSuggestions] = useState([]);
 
-  const reset = () => {
-    setSearchValue("");
-  }
 
+
+  const searchAndReset = (locationSuggestions) => {
+    setGetInfo(locationSuggestions);
+    setSearchValue('');
+  };
 
   useEffect(() => {
-    if(searchValue !== ""){
-      axios.get(`https://rickandmortyapi.com/api/location/?name=${searchValue}`)
-        .then(res => setLocationSuggestions(res.data.results))
+    if (searchValue !== '') {
+      axios
+        .get(`https://rickandmortyapi.com/api/location/?name=${searchValue}`)
+        .then((res) => setLocationSuggestions(res.data.results));
     } else {
-      setLocationSuggestions([])
-      reset();
+      setLocationSuggestions([]);
     }
   }, [searchValue]);
 
@@ -73,16 +78,21 @@ const RickAndMortys = () => {
             onChange={(e) => setSearchValue(e.target.value)}
           />
 
-
           <label className="lbl-name">
             <span className="txt-name">Type ID location</span>
           </label>
         </form>
       </div>
-        {locationSuggestions.map(location => (
-        <div className="searchLocation" onClick={() => setGetInfo(location)}>{location.name}</div>
+      {locationSuggestions.map((location) => (
+        <div
+          className="searchLocation"
+          key={location.id}
+          onClick={() => searchAndReset(location)}
+        >
+          {location.name}
+        </div>
       ))}
-      <LocationInfo getInfo={getInfo}/>
+      <LocationInfo getInfo={getInfo} />
 
       <h1 className="title-size">Residents</h1>
 
@@ -93,23 +103,22 @@ const RickAndMortys = () => {
       </ul>
 
       <div className="btn-pagination">
-        <button 
-        className="btn-numbers" 
-        onClick={() => setPage(page-1)} 
-        disabled={page === 1}
+        <button
+          className="btn-numbers"
+          onClick={() => setPage(page - 1)}
+          disabled={page === 1}
         >
-          <i className='bx bx-chevron-left icon-size'></i>
+          <i className="bx bx-chevron-left icon-size"></i>
         </button>
 
-        <button 
-        className="btn-numbers" 
-        onClick={() => setPage(page+1)} 
-        disabled={page === lastPage}
+        <button
+          className="btn-numbers"
+          onClick={() => setPage(page + 1)}
+          disabled={page === lastPage}
         >
-          <i className='bx bx-chevron-right icon-size'></i>
+          <i className="bx bx-chevron-right icon-size"></i>
         </button>
       </div>
-
     </div>
   );
 };
