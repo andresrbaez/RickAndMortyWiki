@@ -296,8 +296,9 @@ h3{
 }
 
 .btn-numbers[disabled=disabled], .btn-numbers:disabled {
-  background-color: #0a8383b1;
+  background-color: #0a838355;
   cursor: default;
+  color: rgba(255, 255, 255, 0.4);
 }
 
 
