@@ -79,7 +79,7 @@ const RickAndMortys = () => {
           />
 
           <label className="lbl-name">
-            <span className="txt-name">Type ID location</span>
+            <span className="txt-name">Type location</span>
           </label>
         </form>
       </div>
